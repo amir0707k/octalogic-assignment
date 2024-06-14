@@ -10,7 +10,7 @@ function App() {
   return (
     <div className='bg-gray-100 flex p-0 flex-col w-[100vw] h-[100vh] justify-center items-center '>
       {
-        isLoggedIn ? "" : <Login/>
+        isLoggedIn ? "" : <Login setIsLoggedIn= {setIsLoggedIn}/>
       }
       
     
