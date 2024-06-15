@@ -6,11 +6,16 @@ import { Button } from './components/ui/button'
 import Login from './components/login/Login'
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const token = localStorage.getItem('token') || '';
+
+
+  const [isLoggedIn, setIsLoggedIn] = useState(token ? true : false)
+  
+
   return (
     <div className='bg-gray-100 flex p-0 flex-col w-[100vw] h-[100vh] justify-center items-center '>
       {
-        isLoggedIn ? "" : <Login setIsLoggedIn= {setIsLoggedIn}/>
+        isLoggedIn ? "Another screen" : <Login setIsLoggedIn= {setIsLoggedIn}/>
       }
       
     

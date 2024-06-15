@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import { Input } from "@/components/ui/input"
 import { Button } from '../ui/button'
+import { generateAccessToken } from '@/functions/generateToken'
 
 
 function Login({setIsLoggedIn}) {
 
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
-
+  
   const handleSubmit = (e) => {
 
     e.preventDefault();
@@ -16,7 +17,7 @@ function Login({setIsLoggedIn}) {
       alert(`Username and Password field shouldn't be empty`)
       return
     }
-
+    const token = localStorage.setItem('token',generateAccessToken())
     setIsLoggedIn(true)
   }
 
