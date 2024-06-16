@@ -49,33 +49,15 @@ function Overview() {
 
     let { courses } = useContext(coursesContext);
     courses = courses.slice(0, 5)
-    /* 
-            {
-         name: "Guitar Basics",
-         description: "Learn the fundamentals of guitar playing.",
-         instructor: "John Doe",
-         instrument: "Guitar",
-         dayOfWeek: "Monday",
-         numberOfStudents: 15,
-         price: 100,
-         status: "Active",
-         action: {
-           editCourse: true,
-           closeCourse: true,
-           archiveCourse: true
-         },
-         enrollmentDate: "12-08-2023",
-         enrollmentNumber: "1563124"
-       }
-         */
+
     return (
-        <div className="w-full h-full flex items-center pt-6 pl-10 flex-col gap-10 pr-10">
+        <div className="w-full h-full flex items-center pt-6 pl-10 flex-col gap-10 pr-10 ">
             <h1 className="self-start font-semibold text-3xl text-gray-500">Overview</h1>
-            <div className='flex gap-4 text-sm flex-wrap lg:flex-row  justify-center'>
+            <div className='flex gap-4 text-sm flex-wrap lg:flex-row  justify-center w-full'>
 
                 {
                     overviewDetails.map((overview) => {
-                        return <Card key={crypto.randomUUID()} className='flex flex-col lg:w-[45%] lg:w-fit'>
+                        return <Card key={crypto.randomUUID()} className='flex flex-col w-fit lg:w-[19%] lg:flex-wrap'>
                             <CardHeader>
                                 <div className='flex items-center gap-4'>
                                     <div>
@@ -149,7 +131,7 @@ function Overview() {
                     <h3>Best Students</h3>
                     <p className='self-end text-[#b33187] text-sm'>View Courses</p>
                 </div>
-                <div className=' px-3 py-4 box-border rounded-md bg-white'>
+                <div className=' px-3 py-4 box-border rounded-md bg-white mb-10'>
                     <Table>
                         <TableHeader className='w-full'>
                             <TableRow>

@@ -59,7 +59,7 @@ function Courses() {
         course.instructor.toLowerCase().includes(queryLower) ||
         course.instrument.toLowerCase().includes(queryLower) ||
         course.price.toString().includes(queryLower) ||
-        course.status.toLowerCase().includes(queryLower) ||
+        course.status.toLowerCase().includes(queryLower) || course.dayOfWeek.toLowerCase().includes(queryLower) ||
         course.numberOfStudents.toString().includes(queryLower)
       );
     });
