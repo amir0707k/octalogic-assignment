@@ -45,7 +45,27 @@ function Courses() {
   const [instrument, setInstrument] = useState("");
   const [day, setDay] = useState("");
   const [price, setPrice] = useState("");
+  const [query, setQuery] = useState('')
 
+  const [filteredCourses, setFilteredCourses] = useState(courses)
+
+
+  useEffect(() => {
+    const newCourses = courses.filter((course) => {
+      const queryLower = query.trim().toLowerCase();
+      return (
+        course.name.toLowerCase().includes(queryLower) ||
+        course.description.toLowerCase().includes(queryLower) ||
+        course.instructor.toLowerCase().includes(queryLower) ||
+        course.instrument.toLowerCase().includes(queryLower) ||
+        course.price.toString().includes(queryLower) ||
+        course.status.toLowerCase().includes(queryLower) ||
+        course.numberOfStudents.toString().includes(queryLower)
+      );
+    });
+  
+    setFilteredCourses(newCourses);
+  }, [query, courses, setFilteredCourses]);
   const handleAddCourse = () => {
     if (courseName.trim() == '' || description.trim() == '' || instructor.trim() == '' || instrument.trim() == '' || day.trim() == '' || price.trim() == '') {
       alert('All fields are required')
@@ -89,7 +109,7 @@ function Courses() {
               <span class="material-symbols-outlined"  >
                 search
               </span>
-              <input type="text" placeholder="Search" className="pl-2 outline-none" />
+              <input type="text" placeholder="Search" className="pl-2 outline-none" value={query} onChange={(e) => setQuery(e.target.value)} />
             </div>
           </div>
         </div>
@@ -111,7 +131,7 @@ function Courses() {
           </TableHeader>
 
           <TableBody>
-            {courses.map((course) => (
+            {filteredCourses.map((course) => (
               <TableRow key={crypto.randomUUID()}>
                 <TableCell className="font-medium text-left py-2">
                   {course.name.length > 20 ? `${course.name.substring(0, 20)}...` : course.name}

@@ -47,7 +47,7 @@ const overviewDetails = [
 
 function Overview() {
 
-    let { courses, setCourses } = useContext(coursesContext);
+    let { courses } = useContext(coursesContext);
     courses = courses.slice(0, 5)
     /* 
             {
@@ -75,20 +75,20 @@ function Overview() {
 
                 {
                     overviewDetails.map((overview) => {
-                        return <Card key={crypto.randomUUID()} className='flex lg:flex-col w-[45%] lg:w-fit'>
+                        return <Card key={crypto.randomUUID()} className='flex flex-col lg:w-[45%] lg:w-fit'>
                             <CardHeader>
                                 <div className='flex items-center gap-4'>
                                     <div>
-                                        <img src={users_icon} alt="" />
+                                        <img src={users_icon} alt="" className='hidden lg:block' />
                                     </div>
-                                    <div>
-                                        <CardTitle className='text-left text-xl'>{overview.performance}</CardTitle>
+                                    <div className='flex flex-col'>
+                                        <CardTitle className='text-center lg:text-left text-xl'>{overview.performance}</CardTitle>
                                         <CardDescription>{overview.description}</CardDescription>
                                     </div>
                                 </div>
 
                             </CardHeader>
-                            <CardFooter className='self-end text-[#b33187] text-sm'>
+                            <CardFooter className='self-center lg:self-end text-[#b33187] text-sm'>
                                 <p>View</p>
                             </CardFooter>
                         </Card>
