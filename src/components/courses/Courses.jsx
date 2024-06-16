@@ -1,7 +1,6 @@
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -10,9 +9,7 @@ import {
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
-  DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
 import plus from '../../assets/images/plus.svg'
@@ -176,7 +173,6 @@ function Courses() {
                         <img src={dots} alt="options" />
                       </PopoverTrigger>
                       <PopoverContent className='w-fit flex flex-col gap-2'>
-                       
                         <p className='cursor-pointer hover:text-blue-500'>Unarchive Course</p>
                       </PopoverContent>
                     </Popover>
@@ -193,6 +189,7 @@ function Courses() {
         <DialogTrigger className='self-end bg-[#ffbec8] p-4 text-black flex gap-2 items-center rounded-lg '><img src={plus} alt="" className="w-[12px]" /> <span className="font-semibold text-sm">Add Course</span></DialogTrigger>
         <DialogContent>
           <DialogHeader>
+
             <Input placeholder="Course Name" className='outline-none pl-2 text-sm' value={courseName} onChange={(e) => { setCourseName(e.target.value) }} />
             <Input placeholder="Description" className='outline-none pl-2 text-sm' value={description} onChange={(e) => { setDescription(e.target.value) }} />
             <Input placeholder="Instructor" className='outline-none pl-2 text-sm' value={instructor} onChange={(e) => { setInstructor(e.target.value) }} />

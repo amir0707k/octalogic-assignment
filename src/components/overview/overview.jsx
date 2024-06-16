@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import {
     Card,
-    CardContent,
     CardDescription,
     CardFooter,
     CardHeader,
@@ -117,7 +116,6 @@ function Overview() {
                                         {course.enrollmentDate}
 
                                     </TableCell>
-                                    {/* <TableCell className="text-right">{course.action}</TableCell> */}
                                 </TableRow>
                             ))}
                         </TableBody>

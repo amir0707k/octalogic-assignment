@@ -17,7 +17,7 @@ function Login({setIsLogin}) {
       alert(`Username and Password field shouldn't be empty`)
       return
     }
-    const token = localStorage.setItem('token',generateAccessToken())
+    localStorage.setItem('token',generateAccessToken())
     setIsLogin(true)
   }
 
