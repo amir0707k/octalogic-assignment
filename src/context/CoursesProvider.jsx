@@ -4,7 +4,27 @@ import React, { useState } from 'react'
 import coursesContext from './CoursesContext'
 
 function CoursesProvider({children}) {
-    
+   /* 
+           {
+        name: "Guitar Basics",
+        description: "Learn the fundamentals of guitar playing.",
+        instructor: "John Doe",
+        instrument: "Guitar",
+        dayOfWeek: "Monday",
+        numberOfStudents: 15,
+        price: 100,
+        status: "Active",
+        action: {
+          editCourse: true,
+          closeCourse: true,
+          archiveCourse: true
+        },
+        enrollmentDate: "12-08-2023",
+        enrollmentNumber: "1563124"
+      }
+        */
+
+
     const [courses, setCourses] = useState([
       {
         name: "Guitar Basics",
@@ -19,7 +39,9 @@ function CoursesProvider({children}) {
           editCourse: true,
           closeCourse: true,
           archiveCourse: true
-        }
+        },
+        enrollmentDate: "12-08-2023",
+        enrollmentNumber: "1563124"
       },
       {
         name: "Advanced Piano",
@@ -34,7 +56,9 @@ function CoursesProvider({children}) {
           editCourse: false,
           closeCourse: false,
           archiveCourse: false
-        }
+        },
+        enrollmentDate: "13-08-2023",
+        enrollmentNumber: "2564125"
       },
       {
         name: "Violin for Beginners",
@@ -47,7 +71,9 @@ function CoursesProvider({children}) {
         status: "Archived",
         action: {
           unarchiveCourse: true
-        }
+        },
+        enrollmentDate: "14-08-2023",
+        enrollmentNumber: "3565126"
       },
       {
         name: "Jazz Saxophone",
@@ -62,7 +88,9 @@ function CoursesProvider({children}) {
           editCourse: true,
           closeCourse: true,
           archiveCourse: true
-        }
+        },
+        enrollmentDate: "15-08-2023",
+        enrollmentNumber: "4566127"
       },
       {
         name: "Drumming 101",
@@ -77,7 +105,9 @@ function CoursesProvider({children}) {
           editCourse: true,
           closeCourse: true,
           archiveCourse: true
-        }
+        },
+        enrollmentDate: "16-08-2023",
+        enrollmentNumber: "5567128"
       },
       {
         name: "Flute Melodies",
@@ -90,7 +120,9 @@ function CoursesProvider({children}) {
         status: "Archived",
         action: {
           unarchiveCourse: true
-        }
+        },
+        enrollmentDate: "17-08-2023",
+        enrollmentNumber: "6568129"
       },
       {
         name: "Trumpet Techniques",
@@ -105,7 +137,9 @@ function CoursesProvider({children}) {
           editCourse: false,
           closeCourse: false,
           archiveCourse: false
-        }
+        },
+        enrollmentDate: "18-08-2023",
+        enrollmentNumber: "7569130"
       },
       {
         name: "Cello Sessions",
@@ -120,7 +154,9 @@ function CoursesProvider({children}) {
           editCourse: true,
           closeCourse: true,
           archiveCourse: true
-        }
+        },
+        enrollmentDate: "19-08-2023",
+        enrollmentNumber: "8560131"
       },
       {
         name: "Clarinet Classics",
@@ -133,7 +169,9 @@ function CoursesProvider({children}) {
         status: "Archived",
         action: {
           unarchiveCourse: true
-        }
+        },
+        enrollmentDate: "20-08-2023",
+        enrollmentNumber: "9561132"
       },
       {
         name: "Vocal Training",
@@ -148,13 +186,19 @@ function CoursesProvider({children}) {
           editCourse: false,
           closeCourse: false,
           archiveCourse: false
-        }
+        },
+        enrollmentDate: "21-08-2023",
+        enrollmentNumber: "10562133"
       }
-    ])
+    ]
+    )
     
   return (
     <coursesContext.Provider value={{courses, setCourses}}>
         {children}
+
+
+       
     </coursesContext.Provider>
   )
 }

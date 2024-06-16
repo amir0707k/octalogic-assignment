@@ -71,9 +71,7 @@ function Courses() {
 
   return (
     <div className="w-full h-full flex items-center p-10 flex-col gap-4 justify-between">
-      <div className="flex flex-col w-full gap-10 text-gray-400">
-
-
+      <div className="flex flex-col w-full gap-4 text-gray-400">
 
         <div className="flex flex-col w-full gap-10 text-gray-400">
           <h1 className="self-start font-semibold text-3xl">Courses</h1>
