@@ -20,17 +20,25 @@ import plus from '../../assets/images/plus.svg'
 import coursesContext from "../../context/CoursesContext"
 import * as DialogPrimitive from "@radix-ui/react-dialog"
 
-
-import React, { useContext, useState } from 'react'
+import dots from '../../assets/images/dots.png'
+import React, { useContext, useEffect, useState } from 'react'
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { generateRandomNum } from "@/functions/generateRandomNum";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
 
-
-// name, description, instructor, instrument, day of week, #ofstudents, price, status, action
 function Courses() {
 
-  const {courses, setCourses} = useContext(coursesContext);
+  const { courses, setCourses } = useContext(coursesContext);
+
+  useEffect(() => {
+    localStorage.setItem('courses', JSON.stringify(courses))
+  }, [courses])
+
   const [courseName, setCourseName] = useState("");
   const [description, setDescription] = useState("");
   const [instructor, setInstructor] = useState("");
@@ -39,16 +47,16 @@ function Courses() {
   const [price, setPrice] = useState("");
 
   const handleAddCourse = () => {
-    if(courseName.trim() == '' || description.trim() == '' || instructor.trim() == '' || instrument.trim() == '' || day.trim() == '' || price.trim() == ''){
+    if (courseName.trim() == '' || description.trim() == '' || instructor.trim() == '' || instrument.trim() == '' || day.trim() == '' || price.trim() == '') {
       alert('All fields are required')
       return
     }
     const newCourse = {
-      name:courseName,
+      name: courseName,
       description,
       instructor,
       instrument,
-      dayOfWeek:day,
+      dayOfWeek: day,
       price,
       status: "Active",
       numberOfStudents: generateRandomNum(),
@@ -126,7 +134,35 @@ function Courses() {
                   <p className={`text-left ${course.status === 'Active' ? 'bg-green-200' : course.status === 'Closed' ? 'bg-red-200' : 'bg-gray-200'} rounded-md text-center px-3 text-gray-400 text-[12px] py-1`}>{course.status}</p>
 
                 </TableCell>
-                {/* <TableCell className="text-right">{course.action}</TableCell> */}
+                <TableCell className="text-right">
+                  {course.status === 'Active' ? (
+                    <Popover>
+                      <PopoverTrigger>
+                        <img src={dots} alt="options" />
+                      </PopoverTrigger>
+                      <PopoverContent className='w-fit flex flex-col gap-2'>
+                        <p className='cursor-pointer hover:text-blue-500'>Edit Course</p>
+                        <p className='cursor-pointer hover:text-blue-500'>Close Course</p>
+                        <p className='cursor-pointer hover:text-blue-500'>Archive Course</p>
+                      </PopoverContent>
+                    </Popover>
+                  ) : course.status === 'Closed' ? (
+                    <div className='cursor-not-allowed pointer-events-none'>
+                      <img src={dots} alt="options" className='opacity-50 ml-auto' />
+                    </div>
+                  ) : (
+                    <Popover>
+                      <PopoverTrigger>
+                        <img src={dots} alt="options" />
+                      </PopoverTrigger>
+                      <PopoverContent className='w-fit flex flex-col gap-2'>
+                       
+                        <p className='cursor-pointer hover:text-blue-500'>Unarchive Course</p>
+                      </PopoverContent>
+                    </Popover>
+                  )}
+                </TableCell>
+
               </TableRow>
             ))}
           </TableBody>
@@ -155,10 +191,10 @@ function Courses() {
                 </Button>
               </DialogPrimitive.Close>
               <DialogPrimitive.Close asChild>
-              <Button className="bg-[#ffbec8] p-3 text-black items-center rounded-lg text-sm hover:text-white"
-               onClick={handleAddCourse}  >
-                <span className="font-semibold text-sm">Add Course</span>
-              </Button>
+                <Button className="bg-[#ffbec8] p-3 text-black items-center rounded-lg text-sm hover:text-white"
+                  onClick={handleAddCourse}  >
+                  <span className="font-semibold text-sm">Add Course</span>
+                </Button>
               </DialogPrimitive.Close>
             </div>
 

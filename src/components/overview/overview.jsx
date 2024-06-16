@@ -15,10 +15,11 @@ import {
     TableHead,
     TableHeader,
     TableRow,
-  } from "@/components/ui/table";
+} from "@/components/ui/table";
 import users_icon from '../../assets/images/users_icon.png'
 import { generateEnrollmentData } from '../../functions/generateEnrollmentData'
 import coursesContext from '@/context/CoursesContext';
+import { splitFullName } from '@/functions/splitFirstLastName';
 
 
 const overviewDetails = [
@@ -46,27 +47,27 @@ const overviewDetails = [
 
 function Overview() {
 
-  let {courses, setCourses} = useContext(coursesContext);
-  courses=courses.slice(0,5)
-   /* 
-           {
-        name: "Guitar Basics",
-        description: "Learn the fundamentals of guitar playing.",
-        instructor: "John Doe",
-        instrument: "Guitar",
-        dayOfWeek: "Monday",
-        numberOfStudents: 15,
-        price: 100,
-        status: "Active",
-        action: {
-          editCourse: true,
-          closeCourse: true,
-          archiveCourse: true
-        },
-        enrollmentDate: "12-08-2023",
-        enrollmentNumber: "1563124"
-      }
-        */
+    let { courses, setCourses } = useContext(coursesContext);
+    courses = courses.slice(0, 5)
+    /* 
+            {
+         name: "Guitar Basics",
+         description: "Learn the fundamentals of guitar playing.",
+         instructor: "John Doe",
+         instrument: "Guitar",
+         dayOfWeek: "Monday",
+         numberOfStudents: 15,
+         price: 100,
+         status: "Active",
+         action: {
+           editCourse: true,
+           closeCourse: true,
+           archiveCourse: true
+         },
+         enrollmentDate: "12-08-2023",
+         enrollmentNumber: "1563124"
+       }
+         */
     return (
         <div className="w-full h-full flex items-center pt-6 pl-10 flex-col gap-10 pr-10">
             <h1 className="self-start font-semibold text-3xl text-gray-500">Overview</h1>
@@ -100,51 +101,96 @@ function Overview() {
             <div className='w-full'>
                 <div className='flex justify-between mb-4'>
                     <h3>LATEST ENROLMENTS</h3>
-                    <p  className='self-end text-[#b33187] text-sm'>View Courses</p>
+                    <p className='self-end text-[#b33187] text-sm'>View Courses</p>
                 </div>
                 <div className=' px-3 py-4 box-border rounded-md bg-white'>
-                <Table>
-                    
+                    <Table>
+                        <TableHeader className='w-full'>
+                            <TableRow>
+                                <TableHead className='text-left'>Enr. No</TableHead>
+                                <TableHead >S. Name</TableHead>
+                                <TableHead>C. Name</TableHead>
+                                <TableHead>Fees</TableHead>
+                                <TableHead className="text-right">Enr. Date</TableHead>
 
-                    
-                    <TableHeader className='w-full'>
-                        <TableRow>
-                            <TableHead className='text-left'>Enr. No</TableHead>
-                            <TableHead >S. Name</TableHead>
-                            <TableHead>C. Name</TableHead>
-                            <TableHead>Fees</TableHead>
-                            <TableHead  className="text-right">Enr. Date</TableHead>
-                            
-                        </TableRow>
-                    </TableHeader>
-
-                    <TableBody>
-                        {courses.map((course) => (
-                            <TableRow key={crypto.randomUUID()}>
-                                <TableCell className="font-medium text-left py-2">
-                                    {course.enrollmentNumber}
-                                </TableCell>
-                                
-                                <TableCell className="text-left">
-                                    {course.instructor.length > 20 ? `${course.instructor.substring(0, 20)}...` : course.instructor}
-                                </TableCell>
-                                <TableCell className="text-left">
-                                    {course.instrument.length > 10 ? `${course.instrument.substring(0, 10)}...` : course.instrument}
-                                </TableCell>
-                                
-                                <TableCell className="text-left">{course.price}</TableCell>
-                                <TableCell className="text-right">
-                                    {course.enrollmentDate}
-
-                                </TableCell>
-                                {/* <TableCell className="text-right">{course.action}</TableCell> */}
                             </TableRow>
-                        ))}
-                    </TableBody>
-                    
-                </Table>
+                        </TableHeader>
+
+                        <TableBody>
+                            {courses.map((course) => (
+                                <TableRow key={crypto.randomUUID()}>
+                                    <TableCell className="font-medium text-left py-2">
+                                        {course.enrollmentNumber}
+                                    </TableCell>
+                                  
+                                    <TableCell className="text-left">
+                                        {course.instructor.length > 20 ? `${course.instructor.substring(0, 20)}...` : course.instructor}
+                                    </TableCell>
+                                    <TableCell className="text-left">
+                                        {course.instrument.length > 10 ? `${course.instrument.substring(0, 10)}...` : course.instrument}
+                                    </TableCell>
+
+                                    <TableCell className="text-left">{course.price}</TableCell>
+                                    <TableCell className="text-right">
+                                        {course.enrollmentDate}
+
+                                    </TableCell>
+                                    {/* <TableCell className="text-right">{course.action}</TableCell> */}
+                                </TableRow>
+                            ))}
+                        </TableBody>
+
+                    </Table>
                 </div>
-                
+
+            </div>
+            <div className='w-full'>
+                <div className='flex justify-between mb-4'>
+                    <h3>Best Students</h3>
+                    <p className='self-end text-[#b33187] text-sm'>View Courses</p>
+                </div>
+                <div className=' px-3 py-4 box-border rounded-md bg-white'>
+                    <Table>
+                        <TableHeader className='w-full'>
+                            <TableRow>
+                                <TableHead className='text-left'>Reg. No</TableHead>
+                                <TableHead >F. Name</TableHead>
+                                <TableHead>L. Name</TableHead>
+                                <TableHead>Course #</TableHead>
+                                <TableHead >Total Fees</TableHead>
+                                <TableHead className="text-right">Reg. Date</TableHead>
+                            </TableRow>
+                        </TableHeader>
+
+                        <TableBody>
+                            {courses.map((course) => (
+                                <TableRow key={crypto.randomUUID()}>
+                                    <TableCell className="font-medium text-left py-2">
+                                        {course.registrationNumber}
+                                    </TableCell>
+                                    <TableCell className="text-left">
+                                        {splitFullName(course.instructor)[0]}
+                                    </TableCell>
+                                    <TableCell className="text-left">
+                                        {splitFullName(course.instructor)[1] ? splitFullName(course.instructor)[1] : ""}
+                                    </TableCell>
+                                    <TableCell className="text-left">
+                                        {course.instrument.length > 10 ? `${course.instrument.substring(0, 10)}...` : course.instrument}
+                                    </TableCell>
+
+                                    <TableCell className="text-left">${course.price}</TableCell>
+                                    <TableCell className="text-right">
+                                        {course.registrationDate}
+
+                                    </TableCell>
+                               
+                                </TableRow>
+                            ))}
+                        </TableBody>
+
+                    </Table>
+                </div>
+
             </div>
         </div>
     )

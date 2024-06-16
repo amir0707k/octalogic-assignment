@@ -4,27 +4,8 @@ import React, { useState } from 'react'
 import coursesContext from './CoursesContext'
 
 function CoursesProvider({children}) {
-   /* 
-           {
-        name: "Guitar Basics",
-        description: "Learn the fundamentals of guitar playing.",
-        instructor: "John Doe",
-        instrument: "Guitar",
-        dayOfWeek: "Monday",
-        numberOfStudents: 15,
-        price: 100,
-        status: "Active",
-        action: {
-          editCourse: true,
-          closeCourse: true,
-          archiveCourse: true
-        },
-        enrollmentDate: "12-08-2023",
-        enrollmentNumber: "1563124"
-      }
-        */
 
-
+    const [isLogin, setIsLogin] = useState(false);
     const [courses, setCourses] = useState([
       {
         name: "Guitar Basics",
@@ -41,7 +22,9 @@ function CoursesProvider({children}) {
           archiveCourse: true
         },
         enrollmentDate: "12-08-2023",
-        enrollmentNumber: "1563124"
+        enrollmentNumber: "1563124",
+        registrationDate: "10-08-2023",
+        registrationNumber: "43422"
       },
       {
         name: "Advanced Piano",
@@ -58,7 +41,9 @@ function CoursesProvider({children}) {
           archiveCourse: false
         },
         enrollmentDate: "13-08-2023",
-        enrollmentNumber: "2564125"
+        enrollmentNumber: "2564125",
+        registrationDate: "11-08-2023",
+        registrationNumber: "53423"
       },
       {
         name: "Violin for Beginners",
@@ -73,7 +58,9 @@ function CoursesProvider({children}) {
           unarchiveCourse: true
         },
         enrollmentDate: "14-08-2023",
-        enrollmentNumber: "3565126"
+        enrollmentNumber: "3565126",
+        registrationDate: "12-08-2023",
+        registrationNumber: "63424"
       },
       {
         name: "Jazz Saxophone",
@@ -90,7 +77,9 @@ function CoursesProvider({children}) {
           archiveCourse: true
         },
         enrollmentDate: "15-08-2023",
-        enrollmentNumber: "4566127"
+        enrollmentNumber: "4566127",
+        registrationDate: "13-08-2023",
+        registrationNumber: "73425"
       },
       {
         name: "Drumming 101",
@@ -107,7 +96,9 @@ function CoursesProvider({children}) {
           archiveCourse: true
         },
         enrollmentDate: "16-08-2023",
-        enrollmentNumber: "5567128"
+        enrollmentNumber: "5567128",
+        registrationDate: "14-08-2023",
+        registrationNumber: "83426"
       },
       {
         name: "Flute Melodies",
@@ -122,7 +113,9 @@ function CoursesProvider({children}) {
           unarchiveCourse: true
         },
         enrollmentDate: "17-08-2023",
-        enrollmentNumber: "6568129"
+        enrollmentNumber: "6568129",
+        registrationDate: "15-08-2023",
+        registrationNumber: "93427"
       },
       {
         name: "Trumpet Techniques",
@@ -139,7 +132,9 @@ function CoursesProvider({children}) {
           archiveCourse: false
         },
         enrollmentDate: "18-08-2023",
-        enrollmentNumber: "7569130"
+        enrollmentNumber: "7569130",
+        registrationDate: "16-08-2023",
+        registrationNumber: "103428"
       },
       {
         name: "Cello Sessions",
@@ -156,7 +151,9 @@ function CoursesProvider({children}) {
           archiveCourse: true
         },
         enrollmentDate: "19-08-2023",
-        enrollmentNumber: "8560131"
+        enrollmentNumber: "8560131",
+        registrationDate: "17-08-2023",
+        registrationNumber: "113429"
       },
       {
         name: "Clarinet Classics",
@@ -171,7 +168,9 @@ function CoursesProvider({children}) {
           unarchiveCourse: true
         },
         enrollmentDate: "20-08-2023",
-        enrollmentNumber: "9561132"
+        enrollmentNumber: "9561132",
+        registrationDate: "18-08-2023",
+        registrationNumber: "123430"
       },
       {
         name: "Vocal Training",
@@ -188,17 +187,18 @@ function CoursesProvider({children}) {
           archiveCourse: false
         },
         enrollmentDate: "21-08-2023",
-        enrollmentNumber: "10562133"
+        enrollmentNumber: "10562133",
+        registrationDate: "19-08-2023",
+        registrationNumber: "133431"
       }
-    ]
-    )
+    ])
+  
+   
+    
     
   return (
-    <coursesContext.Provider value={{courses, setCourses}}>
+    <coursesContext.Provider value={{courses, setCourses, isLogin, setIsLogin}}>
         {children}
-
-
-       
     </coursesContext.Provider>
   )
 }
