@@ -4,4 +4,4 @@ After logging in, you will be redirected to overview page, from sidepanel you ca
 
 I have used Context API to make data global and to access it from anywhere in the code. After taking data from Context API I have loaded it in localStorage
 
-Search functionality works as you type any query, It checks it againts to all the columns and returns you an array loaded with matched objects
+Search functionality works as you type any query, It checks it againts to all the columns and returns you an array loaded with matched objects 

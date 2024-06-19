@@ -50,19 +50,19 @@ function Overview() {
     courses = courses.slice(0, 5)
 
     return (
-        <div className="w-full h-full flex items-center pt-6 pl-10 flex-col gap-10 pr-10 ">
-            <h1 className="self-start font-semibold text-3xl text-gray-500">Overview</h1>
-            <div className='flex gap-4 text-sm flex-wrap lg:flex-row  justify-center w-full'>
+        <div className="w-full h-full flex items-center pt-6 pl-10 flex-col gap-10 pr-10 mt-20">
+            <h1 className="self-start text-lg sm:font-semibold sm:text-3xl text-gray-500">Overview</h1>
+            <div className='flex gap-4 text-sm flex-wrap lg:flex-row  justify-center md:w-full'>
 
                 {
                     overviewDetails.map((overview) => {
-                        return <Card key={crypto.randomUUID()} className='flex flex-col w-fit lg:w-[19%] lg:flex-wrap'>
+                        return <Card key={crypto.randomUUID()} className='flex flex-col w-full flex-wrap sm:w-[47%] md:w-[33%] lg:w-[19%] lg:flex-wrap'>
                             <CardHeader>
                                 <div className='flex items-center gap-4'>
                                     <div>
                                         <img src={users_icon} alt="" className='hidden lg:block' />
                                     </div>
-                                    <div className='flex flex-col'>
+                                    <div className='flex flex-col w-full'>
                                         <CardTitle className='text-center lg:text-left text-xl'>{overview.performance}</CardTitle>
                                         <CardDescription>{overview.description}</CardDescription>
                                     </div>
@@ -103,7 +103,7 @@ function Overview() {
                                     <TableCell className="font-medium text-left py-2">
                                         {course.enrollmentNumber}
                                     </TableCell>
-                                  
+
                                     <TableCell className="text-left">
                                         {course.instructor.length > 20 ? `${course.instructor.substring(0, 20)}...` : course.instructor}
                                     </TableCell>
@@ -163,15 +163,16 @@ function Overview() {
                                         {course.registrationDate}
 
                                     </TableCell>
-                               
+
                                 </TableRow>
                             ))}
                         </TableBody>
 
                     </Table>
                 </div>
-
+                
             </div>
+
         </div>
     )
 }
