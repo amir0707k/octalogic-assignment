@@ -16,7 +16,6 @@ import {
     TableRow,
 } from "@/components/ui/table";
 import users_icon from '../../assets/images/users_icon.png'
-import { generateEnrollmentData } from '../../functions/generateEnrollmentData'
 import coursesContext from '@/context/CoursesContext';
 import { splitFullName } from '@/functions/splitFirstLastName';
 

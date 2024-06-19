@@ -24,7 +24,8 @@ function CoursesProvider({children}) {
         enrollmentDate: "12-08-2023",
         enrollmentNumber: "1563124",
         registrationDate: "10-08-2023",
-        registrationNumber: "43422"
+        registrationNumber: "43422",
+        id:1
       },
       {
         name: "Advanced Piano",
@@ -43,7 +44,8 @@ function CoursesProvider({children}) {
         enrollmentDate: "13-08-2023",
         enrollmentNumber: "2564125",
         registrationDate: "11-08-2023",
-        registrationNumber: "53423"
+        registrationNumber: "53423",
+        id:2
       },
       {
         name: "Violin for Beginners",
@@ -60,7 +62,8 @@ function CoursesProvider({children}) {
         enrollmentDate: "14-08-2023",
         enrollmentNumber: "3565126",
         registrationDate: "12-08-2023",
-        registrationNumber: "63424"
+        registrationNumber: "63424",
+        id:3
       },
       {
         name: "Jazz Saxophone",
@@ -79,7 +82,8 @@ function CoursesProvider({children}) {
         enrollmentDate: "15-08-2023",
         enrollmentNumber: "4566127",
         registrationDate: "13-08-2023",
-        registrationNumber: "73425"
+        registrationNumber: "73425",
+        id:4
       },
       {
         name: "Drumming 101",
@@ -98,7 +102,8 @@ function CoursesProvider({children}) {
         enrollmentDate: "16-08-2023",
         enrollmentNumber: "5567128",
         registrationDate: "14-08-2023",
-        registrationNumber: "83426"
+        registrationNumber: "83426",
+        id:5
       },
       {
         name: "Flute Melodies",
@@ -115,7 +120,8 @@ function CoursesProvider({children}) {
         enrollmentDate: "17-08-2023",
         enrollmentNumber: "6568129",
         registrationDate: "15-08-2023",
-        registrationNumber: "93427"
+        registrationNumber: "93427",
+        id:6
       },
       {
         name: "Trumpet Techniques",
@@ -134,7 +140,8 @@ function CoursesProvider({children}) {
         enrollmentDate: "18-08-2023",
         enrollmentNumber: "7569130",
         registrationDate: "16-08-2023",
-        registrationNumber: "103428"
+        registrationNumber: "103428",
+        id:7
       },
       {
         name: "Cello Sessions",
@@ -153,7 +160,8 @@ function CoursesProvider({children}) {
         enrollmentDate: "19-08-2023",
         enrollmentNumber: "8560131",
         registrationDate: "17-08-2023",
-        registrationNumber: "113429"
+        registrationNumber: "113429",
+        id:8
       },
       {
         name: "Clarinet Classics",
@@ -170,7 +178,8 @@ function CoursesProvider({children}) {
         enrollmentDate: "20-08-2023",
         enrollmentNumber: "9561132",
         registrationDate: "18-08-2023",
-        registrationNumber: "123430"
+        registrationNumber: "123430",
+        id:9
       },
       {
         name: "Vocal Training",
@@ -189,7 +198,8 @@ function CoursesProvider({children}) {
         enrollmentDate: "21-08-2023",
         enrollmentNumber: "10562133",
         registrationDate: "19-08-2023",
-        registrationNumber: "133431"
+        registrationNumber: "133431",
+        id:10
       }
     ])
   

@@ -63,6 +63,23 @@ function Courses() {
   
     setFilteredCourses(newCourses);
   }, [query, courses, setFilteredCourses]);
+
+
+  const handleStateChange = ({currentState, currentId}) => {
+    console.log("called");
+    const updatedCourses = filteredCourses.map((course) => {
+      if(course.id === currentId){
+        course.status = currentState;
+        return course
+      }else{
+        return course
+      }
+      
+    })
+    console.log(updatedCourses);
+    setFilteredCourses(updatedCourses)
+  }
+
   const handleAddCourse = () => {
     if (courseName.trim() == '' || description.trim() == '' || instructor.trim() == '' || instrument.trim() == '' || day.trim() == '' || price.trim() == '') {
       alert('All fields are required')
@@ -93,6 +110,7 @@ function Courses() {
     setPrice('')
   }
 
+  // console.log(courses);
 
   return (
     <div className="w-full h-full flex items-center p-10 flex-col gap-4 justify-between">
@@ -129,7 +147,7 @@ function Courses() {
 
           <TableBody>
             {filteredCourses.map((course) => (
-              <TableRow key={crypto.randomUUID()}>
+              <TableRow key={course.id}>
                 <TableCell className="font-medium text-left py-2">
                   {course.name.length > 20 ? `${course.name.substring(0, 20)}...` : course.name}
                 </TableCell>
@@ -159,8 +177,8 @@ function Courses() {
                       </PopoverTrigger>
                       <PopoverContent className='w-fit flex flex-col gap-2'>
                         <p className='cursor-pointer hover:text-blue-500'>Edit Course</p>
-                        <p className='cursor-pointer hover:text-blue-500'>Close Course</p>
-                        <p className='cursor-pointer hover:text-blue-500'>Archive Course</p>
+                        <p className='cursor-pointer hover:text-blue-500' onClick={() => handleStateChange({currentState: "Closed", currentId:course.id })}>Close Course</p>
+                        <p className='cursor-pointer hover:text-blue-500'  onClick={() => handleStateChange({currentState: "Archived", currentId:course.id })}>Archive Course</p>
                       </PopoverContent>
                     </Popover>
                   ) : course.status === 'Closed' ? (
@@ -173,7 +191,7 @@ function Courses() {
                         <img src={dots} alt="options" />
                       </PopoverTrigger>
                       <PopoverContent className='w-fit flex flex-col gap-2'>
-                        <p className='cursor-pointer hover:text-blue-500'>Unarchive Course</p>
+                        <p className='cursor-pointer hover:text-blue-500'   onClick={() => handleStateChange({currentState: "Active", currentId:course.id })}>Unarchive Course</p>
                       </PopoverContent>
                     </Popover>
                   )}
