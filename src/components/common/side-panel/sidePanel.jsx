@@ -18,7 +18,7 @@ function SidePanel({ setView }) {
 
 
   return (
-    <div className='w-full h-20 bg-white sm:pt-4 fixed flex flex-row justify-between sm:w-24 sm:h-full  sm:flex-col px-5 sm:px-0'>
+    <div className='w-full h-20 bg-white sm:pt-4 fixed flex flex-row justify-between sm:w-24 sm:h-full  sm:flex-col px-5 sm:px-0 z-10'>
       <div className=' flex items-center sm:block gap-2 sm:gap-0'>
         <div className='flex justify-center '>
           <img src={logo} alt="" className='w-10 h-10' />

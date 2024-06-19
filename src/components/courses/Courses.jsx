@@ -100,13 +100,13 @@ function Courses() {
 
         <div className="flex flex-col w-full gap-10 text-gray-400">
           <h1 className="self-start font-semibold text-3xl">Courses</h1>
-          <div className="flex justify-between w-full items-center">
+          <div className="flex justify-between w-full items-center gap-4">
             <p className="text-sm sm:text-lg font-semibold ">COURSE LIST</p>
-            <div className="flex bg-white px-2 py-1 rounded-md border items-center">
-              <span class="material-symbols-outlined"  >
+            <div className="flex bg-white px-2 py-1 rounded-md border items-center w-6/12">
+              <span className="material-symbols-outlined "  >
                 search
               </span>
-              <input type="text" placeholder="Search" className="pl-2 outline-none" value={query} onChange={(e) => setQuery(e.target.value)} />
+              <input type="text" placeholder="Search" className="pl-2 outline-none w-full" value={query} onChange={(e) => setQuery(e.target.value)} />
             </div>
           </div>
         </div>
