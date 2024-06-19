@@ -11,7 +11,7 @@ function MainPage() {
   return (
     <div className='flex w-full h-full p-0 m-0 box-border'>
         <SidePanel setView={setView}/>
-        <div className='ml-24 w-full'>
+        <div className='sm:ml-24 w-full sm:w-[calc(100%-6rem)]'>
           {
             view === 'overview' ? <Overview/> : <Courses/> 
           }

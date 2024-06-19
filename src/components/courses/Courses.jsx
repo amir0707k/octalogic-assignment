@@ -100,8 +100,8 @@ function Courses() {
 
         <div className="flex flex-col w-full gap-10 text-gray-400">
           <h1 className="self-start font-semibold text-3xl">Courses</h1>
-          <div className="flex justify-between w-full">
-            <p className="text-lg font-semibold ">COURSE LIST</p>
+          <div className="flex justify-between w-full items-center">
+            <p className="text-sm sm:text-lg font-semibold ">COURSE LIST</p>
             <div className="flex bg-white px-2 py-1 rounded-md border items-center">
               <span class="material-symbols-outlined"  >
                 search
