@@ -1,12 +1,14 @@
 
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import coursesContext from './CoursesContext'
 
-function CoursesProvider({children}) {
+function CoursesProvider({ children }) {
 
-    const [isLogin, setIsLogin] = useState(false);
-    const [courses, setCourses] = useState([
+  const [isLogin, setIsLogin] = useState(false);
+
+  useEffect(() => {
+    const initialCourses = [
       {
         name: "Guitar Basics",
         description: "Learn the fundamentals of guitar playing.",
@@ -25,7 +27,7 @@ function CoursesProvider({children}) {
         enrollmentNumber: "1563124",
         registrationDate: "10-08-2023",
         registrationNumber: "43422",
-        id:1
+        id: 1
       },
       {
         name: "Advanced Piano",
@@ -45,7 +47,7 @@ function CoursesProvider({children}) {
         enrollmentNumber: "2564125",
         registrationDate: "11-08-2023",
         registrationNumber: "53423",
-        id:2
+        id: 2
       },
       {
         name: "Violin for Beginners",
@@ -63,7 +65,7 @@ function CoursesProvider({children}) {
         enrollmentNumber: "3565126",
         registrationDate: "12-08-2023",
         registrationNumber: "63424",
-        id:3
+        id: 3
       },
       {
         name: "Jazz Saxophone",
@@ -83,7 +85,7 @@ function CoursesProvider({children}) {
         enrollmentNumber: "4566127",
         registrationDate: "13-08-2023",
         registrationNumber: "73425",
-        id:4
+        id: 4
       },
       {
         name: "Drumming 101",
@@ -103,7 +105,7 @@ function CoursesProvider({children}) {
         enrollmentNumber: "5567128",
         registrationDate: "14-08-2023",
         registrationNumber: "83426",
-        id:5
+        id: 5
       },
       {
         name: "Flute Melodies",
@@ -121,7 +123,7 @@ function CoursesProvider({children}) {
         enrollmentNumber: "6568129",
         registrationDate: "15-08-2023",
         registrationNumber: "93427",
-        id:6
+        id: 6
       },
       {
         name: "Trumpet Techniques",
@@ -141,7 +143,7 @@ function CoursesProvider({children}) {
         enrollmentNumber: "7569130",
         registrationDate: "16-08-2023",
         registrationNumber: "103428",
-        id:7
+        id: 7
       },
       {
         name: "Cello Sessions",
@@ -161,7 +163,7 @@ function CoursesProvider({children}) {
         enrollmentNumber: "8560131",
         registrationDate: "17-08-2023",
         registrationNumber: "113429",
-        id:8
+        id: 8
       },
       {
         name: "Clarinet Classics",
@@ -179,7 +181,7 @@ function CoursesProvider({children}) {
         enrollmentNumber: "9561132",
         registrationDate: "18-08-2023",
         registrationNumber: "123430",
-        id:9
+        id: 9
       },
       {
         name: "Vocal Training",
@@ -199,16 +201,23 @@ function CoursesProvider({children}) {
         enrollmentNumber: "10562133",
         registrationDate: "19-08-2023",
         registrationNumber: "133431",
-        id:10
+        id: 10
       }
-    ])
-  
-   
-    
-    
+    ]
+
+    if (!localStorage.getItem('courses')) {
+      localStorage.setItem('courses', JSON.stringify(initialCourses));
+    }
+  }, [])
+
+  const coursesFromLocal = JSON.parse(localStorage.getItem('courses'));
+  const [courses, setCourses] = useState(coursesFromLocal);
+
+
+
   return (
-    <coursesContext.Provider value={{courses, setCourses, isLogin, setIsLogin}}>
-        {children}
+    <coursesContext.Provider value={{ courses, setCourses, isLogin, setIsLogin }}>
+      {children}
     </coursesContext.Provider>
   )
 }

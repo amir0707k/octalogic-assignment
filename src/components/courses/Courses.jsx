@@ -78,6 +78,7 @@ function Courses() {
     })
     console.log(updatedCourses);
     setFilteredCourses(updatedCourses)
+    localStorage.setItem('courses', JSON.stringify(updatedCourses));
   }
 
   const handleAddCourse = () => {
@@ -100,6 +101,8 @@ function Courses() {
         archiveCourse: true
       }
     }
+
+
 
     setCourses([...courses, newCourse])
     setCourseName('');
